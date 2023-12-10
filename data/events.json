@@ -1,0 +1,29 @@
+[
+    {
+        "OrganizerId": 2,
+        "id": 1,
+        "title": "Fun Run",
+        "body": "Run from Cebu to Talisay at 9km",
+        "upvotes": 0,
+        "time": "2023-11-16",
+        "status": "completed"
+    },
+    {
+        "OrganizerId": 2,
+        "id": 1,
+        "title": "Battle of the Bands",
+        "body": "Open Mic for local Musicians",
+        "upvotes": 0,
+        "time": "2023-12-15",
+        "status": "ongoing"
+    },
+    {
+        "OrganizerId": 2,
+        "id": 1,
+        "title": "Christmas Concert",
+        "body": "One last christmas carol before the end of christmas",
+        "upvotes": 0,
+        "time": "2023-12-25",
+        "status": "completed"
+    }
+]
