@@ -17,7 +17,6 @@ body {
   width: 100%;
   text-align: center;
   padding: 10px 0;
-  background-color: #e74c3c;
 }
 
 .LowerHead {
@@ -32,6 +31,10 @@ body {
   display: flex;
   justify-content: space-evenly;
   background-color: #e74c3c;
+}
+
+.interactables:hover {
+  background-color: #c0392b; /* Darker color when the mouse is on it */
 }
 
 #Home, #CreatePost, #dashboard {
@@ -54,19 +57,14 @@ body {
   flex: 1;
   background-color: #bdc3c7;
   height: fit-content; /* Adjust height as needed */
-  height: 400px;
 }
 
 .EventContainer {
   flex: 3;
   background-color: #3498db;
-  height: 400px; /* Adjust height as needed */
-}
-
-.EventTitle {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
+  display: block;
+  overflow: auto;
+  height: 100%;
 }
 
 .UniqueEventContainer {
@@ -74,6 +72,41 @@ body {
   border: 1px solid #ddd;
   margin-bottom: 20px;
   padding: 15px;
+}
+
+.EventTitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.EventBody {
+    margin-bottom: 10px;
+}
+
+.Bodytop, .Bodybottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Date, .EventDescription, .upvotes, .participants, .status {
+    margin-bottom: 5px;
+}
+
+.EventAction {
+    margin-top: 10px;
+}
+
+.Upvotebtn, .Joinbtn {
+    padding: 8px 12px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.CommentSection {
+    margin-top: 15px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
 }
 
 #PageCounter {

@@ -12,8 +12,15 @@
                                     <div class='UniqueEventContainer'>
                                         <div class='EventTitle'>".$event['title']."</div>
                                         <div class='EventBody'>
-                                            <div class='upvotes'>".$event['upvotes']."</div>
-                                            <div class='participants'>100</div>
+                                            <div class='Bodytop'>
+                                                <div class='Date'> <b>Date: </b>".$event['time']."</div>
+                                                <div class='EventDescription'> ".$event['body']."</div>
+                                            </div>
+                                            <div class='Bodybottom'>
+                                                <div class='upvotes'> <b>Upvotes: </b>".$event['upvotes']."</div>
+                                                <div class='participants'> <b>Participants: </b> 100</div>
+                                                <div class='status'> <b>Status: </b> ".$event['status']."</div>
+                                            </div>
                                         </div>
                                         <div class='EventAction'>
                                             <input type='hidden' name='event_id' value='". $event['id'] ."'>
@@ -43,19 +50,8 @@
             <div class="EventContainer">
                 <div id="DataContainer">
 
-                    <div class="UniqueEventContainer">
-                        <div class="EventTitle">Sample Title</div>
-                        <div class="EventBody"></div>
-                        <div class="CommentSection"></div>
-                    </div>
-
                     <?php echo $display; ?>
 
-                </div>
-                <div id="PageCounter">
-                    <button id="prevButton"><</button>
-                    <h4 id="Pcounter">1</h4>
-                    <button id="nextButton">></button>
                 </div>
             </div>
 
