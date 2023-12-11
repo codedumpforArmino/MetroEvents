@@ -39,9 +39,9 @@
             <div class="LowerHead">
                 <h3 id="CurrentUser">Logged In as <?php echo $_SESSION['Username']; ?></h3>
                 <div class="interactables">
-                    <button onclick="window.location.href = 'index.php'" id="Home">Home</button>
+                    <button onclick="window.location.href = 'mainpage.php'" id="Home">Home</button>
                     <button id="CreatePost">Notifications</button>
-                    <button id="dashboard">User</button>
+                    <button onclick="window.location.href = 'user_profile.php'id="dashboard">User</button>                
                 </div>
             </div>
         </div>
