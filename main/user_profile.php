@@ -3,7 +3,7 @@ session_start();
 
 
 if (!isset($_SESSION['UserID'])) {
-  
+   
     header('Location: login.php');
     exit();
 }
@@ -49,6 +49,7 @@ if ($loggedInUser === null) {
 <p>User ID: <?php echo $loggedInUser['UserID']; ?></p>
 <p>Username: <?php echo $loggedInUser['Username']; ?></p>
 <p>User Type: <?php echo $loggedInUser['UserType']; ?></p>
+
 
 
 </body>
