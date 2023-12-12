@@ -8,7 +8,7 @@
             $organizedEvents="";
 
             foreach($events as $event){
-                if($event['OrganizerId'] == $_COOKIE('UserID')){
+                if($event['OrganizerId'] == $_COOKIE['UserID']){
                     $organizedEvents .="<form action='event_action.php' method='post'>
                                     <div class='UniqueEventContainer'>
                                         <div class='EventTitle'>".$event['title']."</div>
@@ -50,6 +50,50 @@
         </div>
 
         <div class="BodyContainer">
+            <div class="Dashboard_container">
+                <div class="table-container">
+                    <h2>Table</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Add table rows dynamically here -->
+                            <tr>
+                                <td>1</td>
+                                <td>John Doe</td>
+                                <td>john@example.com</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Jane Smith</td>
+                                <td>jane@example.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="newEvent_forum">
+                    <h2>Create Event</h2>
+                    <form action="event_action.php" method="post">
+                        <label for="eventTitle">Event Title:</label>
+                        <input type="text" id="eventTitle" name="eventTitle" required>
+
+                        <label for="eventDescription">Event Description:</label>
+                        <textarea id="eventDescription" name="eventDescription" rows="4" required></textarea>
+
+                        <label for="eventTime">Event Time:</label>
+                        <input type="date" id="eventTime" name="eventTime" required>
+
+                        <button type="submit" name='action' value='createEvent'>Create Event</button>
+                    </form>
+                </div>
+            </div>
+
             <div class="EventContainer">
                 <div id="DataContainer">
 
