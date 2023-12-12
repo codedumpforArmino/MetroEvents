@@ -1,18 +1,18 @@
 <?php
 session_start();
 
-// Check if the user is logged in
+
 if (!isset($_SESSION['UserID'])) {
-    // Redirect to the login page if not logged in
+  
     header('Location: login.php');
     exit();
 }
 
-// Read JSON file
+
 $jsonData = file_get_contents('users.json');
 $users = json_decode($jsonData, true);
 
-// Find the logged-in user based on UserID
+
 $loggedInUser = null;
 foreach ($users as $user) {
     if ($user['UserID'] == $_SESSION['UserID']) {
@@ -21,7 +21,7 @@ foreach ($users as $user) {
     }
 }
 
-// Check if the user was found
+
 if ($loggedInUser === null) {
     echo "Error: User not found.";
     exit();
@@ -50,7 +50,6 @@ if ($loggedInUser === null) {
 <p>Username: <?php echo $loggedInUser['Username']; ?></p>
 <p>User Type: <?php echo $loggedInUser['UserType']; ?></p>
 
-<!-- Add any other user information you want to display -->
 
 </body>
 </html>
