@@ -9,6 +9,7 @@
 
     if($action === 'LogIn'){
         $LogInStatus = 0;
+        $redirectUrl = "index.php?error=1";
 
         foreach($users as $user){
             if($user['Username'] == $Uname && $user['Userpassword'] == $Upass){
@@ -21,10 +22,12 @@
             }
         }
 
-        if($LogInStatus == 0){
-            $redirectUrl = "index.php?error=1";
-        }else{
+        if($_COOKIE['UserType'] === 'regular'){
             $redirectUrl = "mainpage.php";
+        } else if($_COOKIE['UserType'] === 'organizer'){
+            $redirectUrl = "organier_dash.php";
+        }else{
+            $redirectUrl = "admin_dash.php";
         }
     }
     else if($action === 'Register'){
