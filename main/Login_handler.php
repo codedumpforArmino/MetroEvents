@@ -15,7 +15,7 @@
             if($user['Username'] == $Uname && $user['Userpassword'] == $Upass){
                 setcookie('UserType', $user['UserType'], time() + 86400 * 30, "/");
 		        setcookie('Username', $user['Username'], time() + (86400 * 30), "/"); 
-                setcookie('UserID', $user['Username'], time() + (86400 * 30), "/");
+                setcookie('UserID', $user['UserID'], time() + (86400 * 30), "/");
 
                 $LogInStatus = 1;
                 break;
