@@ -37,7 +37,7 @@
         <div class="HeaderContainter">
             <h1>WEB DEV: Metro Event</h1>
             <div class="LowerHead">
-                <h3 id="CurrentUser">Logged In as <?php echo $_SESSION['Username']; ?></h3>
+                <h3 id="CurrentUser">Logged In as <?php echo $_COOKIE['Username']; ?></h3>
                 <div class="interactables">
                     <button onclick="window.location.href = 'mainpage.php'" id="Home">Home</button>
                     <button id="CreatePost">Notifications</button>
