@@ -1,4 +1,4 @@
-{
+[
     {
         "UserID": 1,
         "Username":"mariosumm",
@@ -6,4 +6,4 @@
         "RequestDesc": "Interested to join Event",
         "EventId": 0
     }
-}
+]

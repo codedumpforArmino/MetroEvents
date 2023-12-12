@@ -5,10 +5,11 @@
             session_start();
             
             $events = json_decode(file_get_contents('../data/events.json'), true);
-            $display="";
+            $organizedEvents="";
 
             foreach($events as $event){
-                $display .="<form action='event_action.php' method='post'>
+                if($event['OrganizerId'] == $_COOKIE('UserID')){
+                    $organizedEvents .="<form action='event_action.php' method='post'>
                                     <div class='UniqueEventContainer'>
                                         <div class='EventTitle'>".$event['title']."</div>
                                         <div class='EventBody'>
@@ -30,6 +31,7 @@
                                         <div class='CommentSection'></div>
                                     </div>
                             </form>";
+                }
             }
         ?>
     </head>
@@ -37,12 +39,10 @@
         <div class="HeaderContainter">
             <h1>WEB DEV: Metro Event</h1>
             <div class="LowerHead">
-                <h3 id="CurrentUser">Logged In as <?php echo $_SESSION['Username']; ?></h3>
+                <h3 id="CurrentUser">Logged In as <?php echo $_COOKIE['Username']; ?></h3>
                 <div class="interactables">
                     <button onclick="window.location.href = 'mainpage.php'" id="Home">Home</button>
                     <button id="CreatePost">Notifications</button>
-                    <button onclick="window.location.href = 'user_profile.php';" id="dashboard">Create Evemt</button>
-                    <button onclick="window.location.href = 'user_profile.php';" id="dashboard">Request</button>
                     <button onclick="window.location.href = 'user_profile.php';" id="dashboard">User</button>
                     <button onclick="window.location.href = 'index.php';" id="dashboard">Logout</button>                 
                 </div>
@@ -53,7 +53,7 @@
             <div class="EventContainer">
                 <div id="DataContainer">
 
-                    <?php echo $display; ?>
+                    <?php echo $organizedEvents; ?>
 
                 </div>
             </div>
