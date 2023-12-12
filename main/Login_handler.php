@@ -9,22 +9,25 @@
 
     if($action === 'LogIn'){
         $LogInStatus = 0;
+        $redirectUrl = "index.php?error=1";
 
         foreach($users as $user){
             if($user['Username'] == $Uname && $user['Userpassword'] == $Upass){
                 setcookie('UserType', $user['UserType'], time() + 86400 * 30, "/");
 		        setcookie('Username', $user['Username'], time() + (86400 * 30), "/"); 
-                setcookier('UserID', $user['Username'], time() + (86400 * 30), "/");
+                setcookie('UserID', $user['Username'], time() + (86400 * 30), "/");
 
                 $LogInStatus = 1;
                 break;
             }
         }
 
-        if($LogInStatus == 0){
-            $redirectUrl = "index.php?error=1";
-        }else{
+        if($_COOKIE['UserType'] === 'regular'){
             $redirectUrl = "mainpage.php";
+        } else if($_COOKIE['UserType'] === 'organizer'){
+            $redirectUrl = "organier_dash.php";
+        }else{
+            $redirectUrl = "admin_dash.php";
         }
     }
     else if($action === 'Register'){
