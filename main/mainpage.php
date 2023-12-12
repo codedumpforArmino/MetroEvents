@@ -48,7 +48,7 @@
                                         <div class='EventAction'>
                                             <input type='hidden' name='event_id' value='". $event['id'] ."'>
                                             <button type='submit' name='action' value='upvote' class='Upvotebtn'>Upvote</button>
-                                            <button class='Joinbtn' id='joinbtn' data-eventid='" . $event['id'] . "'>Join Event</button>
+                                            <button class='Joinbtn' id='joinbtn' name='action' value='joinEvent'>Join Event</button>
                                             <button class='Joinbtn'>Post</button>
                                         </div>
                                         <div class='CommentSection'></div>

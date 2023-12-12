@@ -25,7 +25,7 @@
         
         $newData = array(
             "OrganizerId"=> $_COOKIE['UserID'],
-            "id" => $eventID,
+            "id" => $eventID+1,
             "title" => $_POST['eventTitle'],
             "body" => $_POST['eventDescription'],
             "upvotes" => 0,
@@ -43,6 +43,31 @@
         }
             
         file_put_contents($eventsJSON, $updatedJSON);
+    }
+
+    if($action === 'joinEvent'){
+        $redirectUrl = "mainpage.php?success=2";
+        $requestsJSON = '../data/request.json';
+        $requests = json_decode(file_get_contents($requestsJSON), true);
+
+        $newData = array(
+            "UserID" => $_COOKIE['UserID'],
+            "Username" => $_COOKIE['Username'],
+            "RequestType" => "Join Event",
+            "RequestDesc" => "Interested to join Event",
+            "EventId" => $_POST['event_id']
+        );
+
+        $requests[] = $newData;
+
+        $updatedJSON = json_encode($requests, JSON_PRETTY_PRINT);
+
+        if ($updatedJSON === false) {
+            echo "Error encoding updated data to JSON";
+            exit;
+        }
+            
+        file_put_contents($requestsJSON, $updatedJSON);
     }
 
     header("Location: $redirectUrl");
