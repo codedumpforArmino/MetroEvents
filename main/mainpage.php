@@ -1,6 +1,29 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="../style/event.css">
+        <script>
+    document.querySelectorAll('.Joinbtn').forEach(function(button) {
+        button.addEventListener('click', function() {
+            var eventId = this.getAttribute('data-eventid');
+            fetch('api.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'reqsub=1&RequestType=Join Event&RequestDesc=Interested to join Event&EventId=' + eventId,
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle the response if needed
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    });
+</script>
+
         <?php
             session_start();
             
@@ -25,7 +48,7 @@
                                         <div class='EventAction'>
                                             <input type='hidden' name='event_id' value='". $event['id'] ."'>
                                             <button type='submit' name='action' value='upvote' class='Upvotebtn'>Upvote</button>
-                                            <button class='Joinbtn'>Join Event</button>
+                                            <button class='Joinbtn' id='joinbtn' data-eventid='" . $event['id'] . "'>Join Event</button>
                                             <button class='Joinbtn'>Post</button>
                                         </div>
                                         <div class='CommentSection'></div>
@@ -41,9 +64,14 @@
                 <h3 id="CurrentUser">Logged In as <?php echo $_COOKIE['Username']; ?></h3>
                 <div class="interactables">
                     <button onclick="window.location.href = 'mainpage.php'" id="Home">Home</button>
+                    <a href = "request_page.php">
+                    <button id="dashboard">Request</button>
+                    </a>
                     <button id="CreatePost">Notifications</button>
                     <button onclick="window.location.href = 'user_profile.php';" id="dashboard">User</button>
-                    <button onclick="window.location.href = 'index.php';" id="dashboard">Logout</button>                 
+                    <a href = "logout.php">
+                    <button id="dashboard">Logout</button>    
+                </a>                     
                 </div>
             </div>
         </div>

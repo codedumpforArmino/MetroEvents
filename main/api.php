@@ -10,6 +10,15 @@ function saveEventsToFile($events) {
     file_put_contents('../data/events.json', json_encode($events, JSON_PRETTY_PRINT));
 }
 
+function getRequestsData() {
+    $requests = json_decode(file_get_contents('../data/request.json'), true);
+    return $requests;
+}
+
+function saveRequestsToFile($requests) {
+    file_put_contents('../data/request.json', json_encode($requests, JSON_PRETTY_PRINT));
+}
+
 function deleteEvent($eventId) {
     $events = getEventsData();
 
@@ -31,5 +40,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header('Location: admin_dash.php');
         exit();
     }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['reqsub'])) {
+    $uid = $_COOKIE['UserID'];
+    $uname = $_COOKIE['Username'];
+    $type = $_POST['RequestType'];
+    $reqdesc = $_POST['RequestDesc'];
+    $requests = getRequestsData();
+
+    $maxRequestId = 0;
+    foreach ($requests as $request) {
+        $maxRequestId = max($maxRequestId, $request['id']);
+    }
+
+    $newRequest = [
+        'UserID' => $uid,
+        'Username' => $uname,
+        'RequestType' => $type,
+        'RequestDesc' => $reqdesc,
+        'EventId' => 0,
+    ];
+
+    $requests[] = $newRequest;
+    saveRequestsToFile($requests);
+
+    // Redirect to the same page after submitting the request
+    header('Location: request_page.php');
+    exit();
 }
 ?>

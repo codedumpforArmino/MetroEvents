@@ -33,7 +33,7 @@
         "body": "Explore the latest in technology",
         "upvotes": 0,
         "time": "2024-02-10",
-        "status": "upcoming"
+        "status": "ongoing"
     },
     {
         "OrganizerId": 2,
@@ -42,7 +42,7 @@
         "body": "Enjoy a variety of delicious dishes",
         "upvotes": 0,
         "time": "2024-03-20",
-        "status": "upcoming"
+        "status": "ongoing"
     },
     {
         "OrganizerId": 2,
@@ -51,6 +51,6 @@
         "body": "An exhibition featuring local artists",
         "upvotes": 0,
         "time": "2024-04-15",
-        "status": "upcoming"
+        "status": "ongoing"
     }
 ]
