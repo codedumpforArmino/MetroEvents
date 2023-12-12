@@ -97,7 +97,7 @@ body {
     margin-top: 10px;
 }
 
-.Upvotebtn, .Joinbtn {
+.Upvotebtn, .Joinbtn, .dltbtn {
     padding: 8px 12px;
     margin-right: 5px;
     cursor: pointer;

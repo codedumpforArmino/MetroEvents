@@ -10,7 +10,7 @@
     },
     {
         "OrganizerId": 2,
-        "id": 1,
+        "id": 2,
         "title": "Battle of the Bands",
         "body": "Open Mic for local Musicians",
         "upvotes": 0,
@@ -19,11 +19,47 @@
     },
     {
         "OrganizerId": 2,
-        "id": 1,
+        "id": 3,
         "title": "Christmas Concert",
-        "body": "One last christmas carol before the end of christmas",
+        "body": "One last Christmas carol before the end of Christmas",
         "upvotes": 0,
         "time": "2023-12-25",
         "status": "completed"
+    },
+    {
+        "OrganizerId": 2,
+        "id": 4,
+        "title": "Tech Conference",
+        "body": "Explore the latest in technology",
+        "upvotes": 0,
+        "time": "2024-02-10",
+        "status": "upcoming"
+    },
+    {
+        "OrganizerId": 2,
+        "id": 5,
+        "title": "Food Festival",
+        "body": "Enjoy a variety of delicious dishes",
+        "upvotes": 0,
+        "time": "2024-03-20",
+        "status": "upcoming"
+    },
+    {
+        "OrganizerId": 2,
+        "id": 6,
+        "title": "Art Exhibition",
+        "body": "An exhibition featuring local artists",
+        "upvotes": 0,
+        "time": "2024-04-15",
+        "status": "upcoming"
+    },
+    {
+        "OrganizerId": 2,
+        "id": 7,
+        "title": "Community Cleanup",
+        "body": "Join us in making our community clean and green",
+        "upvotes": 0,
+        "time": "2024-05-22",
+        "status": "upcoming"
     }
 ]

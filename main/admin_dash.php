@@ -24,7 +24,7 @@
                                         </div>
                                         <div class='EventAction'>
                                             <input type='hidden' name='event_id' value='". $event['id'] ."'>
-                                            <button class='Joinbtn'>Delete Event</button>
+                                            <button class='dltbtn'>Delete Event</button>
                                         </div>
                                         <div class='CommentSection'></div>
                                     </div>
@@ -41,7 +41,9 @@
                     <button onclick="window.location.href = 'mainpage.php'" id="Home">Home</button>
                     <button id="CreatePost">Notifications</button>
                     <button onclick="window.location.href = 'user_profile.php';" id="dashboard">User</button>
-                    <button onclick="window.location.href = 'index.php';" id="dashboard">Logout</button>                 
+                    <a href = "logout.php">
+                    <button id="dashboard">Logout</button>    
+                </a>             
                 </div>
             </div>
         </div>

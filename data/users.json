@@ -16,5 +16,11 @@
         "Username": "kevinjosh",
         "Userpassword": "yourpassword3",
         "UserType": "admin"
+    },
+    {
+        "UserID": 4,
+        "Username": "admin",
+        "Userpassword": "123",
+        "UserType": "admin"
     }
 ]
