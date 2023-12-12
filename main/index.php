@@ -43,7 +43,7 @@
                     </div>
                     <div class="PasswordDetails">
                         <Label>Password</Label>
-                        <input type="text" name='userpassword' placeholder="Enter Password">
+                        <input type="password" name='userpassword' placeholder="Enter Password">
                     </div>
                 </div>
                 <div class="LoginButtons">                  
