@@ -52,14 +52,5 @@
         "upvotes": 0,
         "time": "2024-04-15",
         "status": "upcoming"
-    },
-    {
-        "OrganizerId": 2,
-        "id": 7,
-        "title": "Community Cleanup",
-        "body": "Join us in making our community clean and green",
-        "upvotes": 0,
-        "time": "2024-05-22",
-        "status": "upcoming"
     }
 ]
