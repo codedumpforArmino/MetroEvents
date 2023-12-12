@@ -12,9 +12,10 @@
 
         foreach($users as $user){
             if($user['Username'] == $Uname && $user['Userpassword'] == $Upass){
-                $_SESSION['UserType']=$user['UserType'];
-		        $_SESSION['Username']=$user['Username'];
-		        
+                setcookie('UserType', $user['UserType'], time() + 86400 * 30, "/");
+		        setcookie('Username', $user['Username'], time() + (86400 * 30), "/"); 
+                setcookier('UserID', $user['Username'], time() + (86400 * 30), "/");
+
                 $LogInStatus = 1;
                 break;
             }
