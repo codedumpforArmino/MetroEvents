@@ -1,6 +1,7 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="../style/event.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <?php
     include('api.php'); ?>
     </head>
@@ -20,16 +21,12 @@
                 </div>
             </div>
         </div>
-
-        <div class="BodyContainer">
-            <div class="EventContainer">
-                <div id="DataContainer">
-
-                    <?php echo $display; ?>
-
-                </div>
-            </div>
-
+            <form>
+            <div class="form-group">
+        <label for="desc">Request Description</label>
+        <textarea class="form-control" id="desc" rows="3"></textarea>
+        </div>
+        </form>
             <div class="sidebarContainer">
             </div>
         </div>

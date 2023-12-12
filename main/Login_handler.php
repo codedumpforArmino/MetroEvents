@@ -10,23 +10,26 @@
     if($action === 'LogIn'){
         $LogInStatus = 0;
         $redirectUrl = "index.php?error=1";
+        $userType = "";
 
-        foreach($users as $user){
-            if($user['Username'] == $Uname && $user['Userpassword'] == $Upass){
-                setcookie('UserType', $user['UserType'], time() + 86400 * 30, "/");
-		        setcookie('Username', $user['Username'], time() + (86400 * 30), "/"); 
+        foreach ($users as $user) {
+            if ($user['Username'] == $Uname && $user['Userpassword'] == $Upass) {
+                $userType = $user['UserType'];
+                setcookie('UserType', $userType, time() + 86400 * 30, "/");
+                setcookie('Username', $user['Username'], time() + (86400 * 30), "/");
                 setcookie('UserID', $user['UserID'], time() + (86400 * 30), "/");
-
+    
                 $LogInStatus = 1;
                 break;
             }
         }
+    
 
-        if($_COOKIE['UserType'] === 'regular'){
+        if ($userType === 'regular') {
             $redirectUrl = "mainpage.php";
-        } else if($_COOKIE['UserType'] === 'organizer'){
+        } else if ($userType === 'organizer') {
             $redirectUrl = "organier_dash.php";
-        }else{
+        } else {
             $redirectUrl = "admin_dash.php";
         }
     }
