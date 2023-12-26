@@ -41,7 +41,7 @@
             <div class="LowerHead">
                 <h3 id="CurrentUser">Logged In as <?php echo $_COOKIE['Username']; ?></h3>
                 <div class="interactables">
-                    <button onclick="window.location.href = 'mainpage.php'" id="Home">Home</button>
+                    <button onclick="window.location.href = 'organier_dash.php'" id="Home">Home</button>
                     <a href = "request_page.php">
                     <button id="dashboard">Request</button>
                     </a>

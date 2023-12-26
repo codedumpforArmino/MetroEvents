@@ -28,33 +28,51 @@
             session_start();
             
             $events = json_decode(file_get_contents('../data/events.json'), true);
+            $reviews = json_decode(file_get_contents('../data/reviews.json'), true);
+            $Participants = json_decode(file_get_contents('../data/participants.json'), true);
             $display="";
+            
 
             foreach($events as $event){
+                $totalupvote = 0;
+                $totalParticipants = 0;
                 if ($event['status'] === 'ongoing'){
-                $display .="<form action='event_action.php' method='post'>
-                                    <div class='UniqueEventContainer'>
-                                        <div class='EventTitle'>".$event['title']."</div>
-                                        <div class='EventBody'>
-                                            <div class='Bodytop'>
-                                                <div class='Date'> <b>Date: </b>".$event['time']."</div>
-                                                <div class='EventDescription'> ".$event['body']."</div>
+                    foreach($reviews as $review){
+                        if($event['id'] === $review['EventId'] && $review['upvoted']){
+                            $totalupvote++;
+                        }
+                    }
+
+                    foreach($Participants as $Participant){
+                        if($event['id'] === $Participant['EventId']){
+                            $totalParticipants++;
+                        }
+                    }
+
+                    $display .="<form action='event_action.php' method='post'>
+                                        <div class='UniqueEventContainer'>
+                                            <div class='EventTitle'>".$event['title']."</div>
+                                            <div class='EventBody'>
+                                                <div class='Bodytop'>
+                                                    <div class='Date'> <b>Date: </b>".$event['time']."</div>
+                                                    <div class='EventDescription'> ".$event['body']."</div>
+                                                </div>
+                                                <div class='Bodybottom'>
+                                                    <div class='upvotes'> <b>Upvotes: </b>".$totalupvote."</div>
+                                                    <div class='participants'> <b>Participants: </b>".$totalParticipants."</div>
+                                                </div>
                                             </div>
-                                            <div class='Bodybottom'>
-                                                <div class='upvotes'> <b>Upvotes: </b>".$event['upvotes']."</div>
-                                                <div class='participants'> <b>Participants: </b> 100</div>
+                                            <div class='EventAction'>
+                                                <input type='hidden' name='event_id' value='". $event['id'] ."'>
+                                                <button type='submit' name='action' value='upvote' class='Upvotebtn'>Upvote</button>
+                                                <button class='Joinbtn' id='joinbtn' name='action' value='joinEvent'>Join Event</button>
+                                                <button class='Joinbtn'>Post</button>
                                             </div>
+                                            <div class='CommentSection'></div>
                                         </div>
-                                        <div class='EventAction'>
-                                            <input type='hidden' name='event_id' value='". $event['id'] ."'>
-                                            <button type='submit' name='action' value='upvote' class='Upvotebtn'>Upvote</button>
-                                            <button class='Joinbtn' id='joinbtn' name='action' value='joinEvent'>Join Event</button>
-                                            <button class='Joinbtn'>Post</button>
-                                        </div>
-                                        <div class='CommentSection'></div>
-                                    </div>
-                            </form>";
-                }   }
+                                </form>";
+                }
+            }
         ?>
     </head>
     <body>
