@@ -67,8 +67,9 @@
                     <a href = "request_page.php">
                     <button id="dashboard">Request</button>
                     </a>
-                    <button id="CreatePost">Notifications</button>
-                    <button onclick="window.location.href = 'user_profile.php';" id="dashboard">User</button>
+                    <a href = "notification.php">
+                     <button id="createPost">Notifications</button>
+                     </a>
                     <a href = "logout.php">
                     <button id="dashboard">Logout</button>    
                 </a>                     

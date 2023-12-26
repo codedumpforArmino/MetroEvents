@@ -13,9 +13,12 @@
             <h3 id="CurrentUser">Logged In as <?php echo $_COOKIE['Username']; ?></h3>
             <div class="interactables">
                 <button onclick="window.location.href = 'mainpage.php'" id="Home">Home</button>
-                <button id="Dashboard">Request</button>
-                <button id="CreatePost">Notifications</button>
-                <button onclick="window.location.href = 'user_profile.php';" id="dashboard">User</button>
+                <a href = "request_page.php">
+                    <button id="dashboard">Request</button>
+                    </a>
+                <a href = "notification.php">
+                     <button id="createPost">Notifications</button>
+                     </a>
                 <a href="logout.php">
                     <button id="dashboard">Logout</button>
                 </a>
@@ -23,7 +26,7 @@
         </div>
     </div>
 
-    <<form action="api.php" method="post">
+    <form action="api.php" method="post">
         <div class="form-group">
         <label for="type">Request Type</label>
         <select class="form-control" name="RequestType">

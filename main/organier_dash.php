@@ -42,7 +42,12 @@
                 <h3 id="CurrentUser">Logged In as <?php echo $_COOKIE['Username']; ?></h3>
                 <div class="interactables">
                     <button onclick="window.location.href = 'mainpage.php'" id="Home">Home</button>
-                    <button id="CreatePost">Notifications</button>
+                    <a href = "request_page.php">
+                    <button id="dashboard">Request</button>
+                    </a>
+                    <a href = "notification.php">
+                     <button id="createPost">Notifications</button>
+                     </a>
                     <button onclick="window.location.href = 'index.php';" id="dashboard">Logout</button>                 
                 </div>
             </div>

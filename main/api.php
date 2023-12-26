@@ -19,6 +19,20 @@ function saveRequestsToFile($requests) {
     file_put_contents('../data/request.json', json_encode($requests, JSON_PRETTY_PRINT));
 }
 
+function getNotificationsData() {
+    $notifications = json_decode(file_get_contents('../data/notif.json'), true);
+    if ($notifications === null) {
+        // Handle the case where decoding fails, e.g., return an empty array
+        return [];
+    }
+
+    return $notifications;
+}
+
+function deleteNotif(){
+
+}
+
 function deleteEvent($eventId) {
     $events = getEventsData();
 
