@@ -3,28 +3,36 @@
         "EventId": 1,
         "id": 1,
         "name": "Saaad Mane",
+        "upvote": 1,
         "rating": 4,
-        "body": "Fun and Challenging!"
+        "body": "Fun and Challenging!",
+        "upvoted": true
     },
     {
         "EventId": 2,
         "id": 2,
         "name": "Kevin",
+        "upvote": 1,
         "rating": 4,
-        "body": "I enjoyed it!"
+        "body": "I enjoyed it!",
+        "upvoted": true
     },
     {
         "EventId": 2,
         "id": 3,
         "name": "Jibz Erns",
+        "upvote": 1,
         "rating": 2,
-        "body": "wasnt fun for me :/"
+        "body": "wasnt fun for me :\/",
+        "upvoted": true
     },
     {
         "EventId": 3,
         "id": 4,
         "name": "Santa Clause",
+        "upvote": 1,
         "rating": 5,
-        "body": "Best Christmas Ever!"
+        "body": "Best Christmas Ever!",
+        "upvoted": true
     }
 ]
