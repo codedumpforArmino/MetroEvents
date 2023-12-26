@@ -43,7 +43,6 @@
                 <div class="interactables">
                     <button onclick="window.location.href = 'mainpage.php'" id="Home">Home</button>
                     <button id="CreatePost">Notifications</button>
-                    <button onclick="window.location.href = 'user_profile.php';" id="dashboard">User</button>
                     <button onclick="window.location.href = 'index.php';" id="dashboard">Logout</button>                 
                 </div>
             </div>

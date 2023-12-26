@@ -23,10 +23,13 @@
         </div>
     </div>
 
-    <form action="api.php" method="post">
+    <<form action="api.php" method="post">
         <div class="form-group">
-            <label for="type">Request Type</label>
-            <input class="form-control" type="text" name="RequestType" placeholder="Default input">
+        <label for="type">Request Type</label>
+        <select class="form-control" name="RequestType">
+            <option value="Join Event">Join Event</option>
+            <option value="Organizer">Organizer</option>
+        </select>
             <label for="desc">Request Description</label>
             <textarea class="form-control" id="desc" name="RequestDesc" rows="3"></textarea>
             <button class="btn btn-primary" type="submit" name="reqsub">Submit</button>

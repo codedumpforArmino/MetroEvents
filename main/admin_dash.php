@@ -41,7 +41,6 @@
                     <button onclick="window.location.href = 'mainpage.php'" id="Home">Home</button>
                     <button id="Dashboard">Request</button>
                     <button id="CreatePost">Notifications</button>
-                    <button onclick="window.location.href = 'user_profile.php';" id="dashboard">User</button>
                     <a href = "logout.php">
                     <button id="dashboard">Logout</button>    
                 </a>             
