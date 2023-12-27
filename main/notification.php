@@ -10,8 +10,11 @@
 
     $notifications = getNotificationsData();
     $display = "";
+    $loggedInUserId = $_COOKIE['UserID'];
 
     foreach ($notifications as $notification) {
+
+        if ($notification['UserID'] == $loggedInUserId) {
         $display .= "<form action='api.php' method='post'>
                         <div class='UniqueEventContainer'>
                             <h4>" . $notification['body'] . "</h4>
@@ -22,6 +25,7 @@
                     </div>
                     </form>";
     }
+}
     ?>
 </head>
 <body>

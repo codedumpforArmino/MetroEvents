@@ -34,10 +34,12 @@ function getNotificationsData() {
 }
 
 function dltRequest($requestId){
-
+    
 }
 
+function addNotif(){
 
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     if(isset($_POST['action'])){
