@@ -1,6 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="../style/event.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script>
          document.querySelectorAll('.Joinbtn').forEach(function(button) {
         button.addEventListener('click', function() {
@@ -58,7 +59,7 @@
                                         <input type='hidden' name='event_id' value='" . $event['id'] . "'>
                                         <button type='submit' name='action' value='upvote' class='Upvotebtn'>Upvote</button>
                                         <button class='Joinbtn' id='joinbtn' name='action' value='joinEvent'>Join Event</button>
-                                        <button class='Joinbtn'>Post</button>
+
                                     </div>
                                     <div class='CommentSection'>";
 
@@ -71,7 +72,9 @@
                     }
                 }
             
-                $display .= "</div>
+                $display .= "       <textarea class='form-control' id='desc' name='ReviewBody' rows='3'></textarea>
+                                    <button class='Joinbtn' name='action' value='PostReview'>Post</button>
+                                </div>
                             </div>
                         </form>";
             }

@@ -55,11 +55,11 @@
         $requests = json_decode(file_get_contents($requestsJSON), true);
 
         $newData = array(
-            "UserID" => $_COOKIE['UserID'],
+            "UserID" => (int) $_COOKIE['UserID'],
             "Username" => $_COOKIE['Username'],
             "RequestType" => "Join Event",
             "RequestDesc" => "Interested to join Event",
-            "EventId" => $_POST['event_id']
+            "EventId" => (int) $_POST['event_id']
         );
 
         $requests[] = $newData;
@@ -74,5 +74,31 @@
         file_put_contents($requestsJSON, $updatedJSON);
     }
 
-    header("Location: $redirectUrl");
+    if($action ==='PostReview'){
+        $redirectUrl = "mainpage.php?success=3";
+        $reviewsJSON = '../data/reviews.json';
+        $reviews = json_decode(file_get_contents($reviewsJSON), true);
+
+        $newData = array(
+            "EventId" => $_POST['event_id'],
+            "id" => $_COOKIE['UserID'],
+            "name" => $_COOKIE['Username'], 
+            "body" => $_POST['ReviewBody']
+        );
+
+        $reviews[] = $newData;
+
+        $updatedJSON = json_encode($reviews, JSON_PRETTY_PRINT);
+
+        if ($updatedJSON === false) {
+            echo "Error encoding updated data to JSON";
+            exit;
+        }
+
+        var_dump($reviewsJSON);
+            
+        file_put_contents($reviewsJSON, $updatedJSON);
+    }
+
+    
 ?>
