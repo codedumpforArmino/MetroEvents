@@ -10,23 +10,17 @@
 
 
     //function to upvote
-    if ($action === 'upvote') {
-        $eventId = $_POST['event_id'];
-    
-        foreach ($reviews as $index => $review) {
-            if (!isset($review['upvoted']) || !$review['upvoted']) {
-                // Update the upvote count
-                $reviews[$index]['upvote']++;
-
-                // Set 'upvoted' flag to true
-                $reviews[$index]['upvoted'] = true;
-
-                file_put_contents('../data/reviews.json', json_encode($reviews, JSON_PRETTY_PRINT));
-
-                break; 
-            } 
-        }
-    }
+        if ($action === 'upvote') {
+            $eventId = $_POST['event_id'];
+            foreach($events as $index => $event){
+                if ($event['id'] == $eventId) {
+                    $events[$index]['upvotes']++;
+                    break;
+                    }   
+                }
+                file_put_contents('../data/events.json', json_encode($events, JSON_PRETTY_PRINT));    
+            }
+           
 
     //function to add new event
     if($action === 'createEvent'){

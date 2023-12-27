@@ -2,7 +2,7 @@
     <head>
         <link rel="stylesheet" type="text/css" href="../style/event.css">
         <script>
-    document.querySelectorAll('.Joinbtn').forEach(function(button) {
+         document.querySelectorAll('.Joinbtn').forEach(function(button) {
         button.addEventListener('click', function() {
             var eventId = this.getAttribute('data-eventid');
             fetch('api.php', {
@@ -34,21 +34,6 @@
             
 
             foreach($events as $event){
-                $totalupvote = 0;
-                $totalParticipants = 0;
-                if ($event['status'] === 'ongoing'){
-                    foreach($reviews as $review){
-                        if($event['id'] === $review['EventId'] && $review['upvoted']){
-                            $totalupvote++;
-                        }
-                    }
-
-                    foreach($Participants as $Participant){
-                        if($event['id'] === $Participant['EventId']){
-                            $totalParticipants++;
-                        }
-                    }
-
                     $display .="<form action='event_action.php' method='post'>
                                         <div class='UniqueEventContainer'>
                                             <div class='EventTitle'>".$event['title']."</div>
@@ -58,8 +43,8 @@
                                                     <div class='EventDescription'> ".$event['body']."</div>
                                                 </div>
                                                 <div class='Bodybottom'>
-                                                    <div class='upvotes'> <b>Upvotes: </b>".$totalupvote."</div>
-                                                    <div class='participants'> <b>Participants: </b>".$totalParticipants."</div>
+                                                <div class='upvotes'> <b>Upvotes: </b>".$event['upvotes']."</div>
+                                                <div class='participants'> <b>Participants: </b> 100</div>
                                                 </div>
                                             </div>
                                             <div class='EventAction'>
@@ -72,7 +57,6 @@
                                         </div>
                                 </form>";
                 }
-            }
         ?>
     </head>
     <body>
