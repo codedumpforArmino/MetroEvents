@@ -31,7 +31,7 @@
         <label for="type">Request Type</label>
         <select class="form-control" name="RequestType">
             <option value="Join Event">Join Event</option>
-            <option value="Organizer">Organizer</option>
+            <option value="Organizer Request">Organizer Request</option>
         </select>
             <label for="desc">Request Description</label>
             <textarea class="form-control" id="desc" name="RequestDesc" rows="3"></textarea>

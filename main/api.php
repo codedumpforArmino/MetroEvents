@@ -33,6 +33,25 @@ function getNotificationsData() {
     return $notifications;
 }
 
+
+function updateRequestStatus($userId, $action) {
+    if ($action === 'Approve') {
+        $users = json_decode(file_get_contents('users.json'), true);
+        $userIndex = array_search($userId, array_column($users, 'UserID'));
+
+        if ($userIndex !== false) {
+            $users[$userIndex]['UserType'] = 'organizer';
+            file_put_contents('users.json', json_encode($users, JSON_PRETTY_PRINT));
+
+            header('Location: admin_dash.php');
+            exit;
+        } else {
+            echo "User not found.";
+            exit;
+        }
+    }
+}
+
 function dltRequest($requestId){
     $requests = getRequestsData();
 
@@ -66,11 +85,11 @@ function addNotif($requestId, $case){
         $notifmsg = "Your request to join event has been declined.";
     }
 
-    if($data['RequestType'] == 'Organizer Request' && $case == 'accept'){
+    if($data['RequestType'] == 'Organizer Request' && $case == 'Approve'){
         $notifmsg = "Your request to join event has been approved.";
     }
 
-    if($data['RequestType'] == 'Organizer Request' && $case == 'decline'){
+    if($data['RequestType'] == 'Organizer Request' && $case == 'Decline'){
         $notifmsg = "Your request to be an organizer has been declined.";
     }
 
@@ -95,6 +114,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         addNotif($request, $action);
     }
 }
+
+
 
 function deleteNotif($notificationId){
     $notifications = getNotificationsData();
@@ -142,31 +163,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['reqsub'])) {
-    $uid = $_COOKIE['UserID'];
-    $uname = $_COOKIE['Username'];
-    $type = $_POST['RequestType'];
-    $reqdesc = $_POST['RequestDesc'];
-    $requests = getRequestsData();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['reqsub'])) {
+        $uid = $_COOKIE['UserID'];
+        $uname = $_COOKIE['Username'];
+        $type = $_POST['RequestType'];
+        $reqdesc = $_POST['RequestDesc'];
+        $requests = getRequestsData();
 
-    $maxRequestId = 0;
-    foreach ($requests as $request) {
-        $maxRequestId = max($maxRequestId, $request['id']);
+        $maxRequestId = 0;
+        foreach ($requests as $request) {
+            $maxRequestId = max($maxRequestId, $request['id']);
+        }
+
+        $newRequest = [
+            'UserID' => $uid,
+            'Username' => $uname,
+            'RequestType' => $type,
+            'RequestDesc' => $reqdesc,
+            'EventId' => 0,
+        ];
+
+        $requests[] = $newRequest;
+        saveRequestsToFile($requests);
+        header('Location: request_page.php');
+        exit();
+    } elseif (isset($_POST['other_action'])) {
+
     }
-
-    $newRequest = [
-        'UserID' => $uid,
-        'Username' => $uname,
-        'RequestType' => $type,
-        'RequestDesc' => $reqdesc,
-        'EventId' => 0,
-    ];
-
-    $requests[] = $newRequest;
-    saveRequestsToFile($requests);
-
-    // Redirect to the same page after submitting the request
-    header('Location: request_page.php');
-    exit();
 }
+
 ?>

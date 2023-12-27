@@ -36,8 +36,9 @@
                                         </div>
                             <div class='EventAction'>
                                 <input type='hidden' name='event_id' value='" . $key . "'>
-                                <button type='submit' name='Approve' class='dltbtn'>Approve</button>
-                                <button type='submit' name='Decline' class='dltbtn'>Decline</button>
+                                <input type='hidden' name='user_id' value='" . $request['UserID'] . "'>
+                                <button type='submit'  name='action' value='Approve' class='dltbtn'>Approve</button>
+                                <button type='submit'  name='action' value='Decline' class='dltbtn'>Decline</button>
                             </div>
                         </div>
                     </form>";
