@@ -33,30 +33,48 @@
             $display="";
             
 
-            foreach($events as $event){
-                    $display .="<form action='event_action.php' method='post'>
-                                        <div class='UniqueEventContainer'>
-                                            <div class='EventTitle'>".$event['title']."</div>
-                                            <div class='EventBody'>
-                                                <div class='Bodytop'>
-                                                    <div class='Date'> <b>Date: </b>".$event['time']."</div>
-                                                    <div class='EventDescription'> ".$event['body']."</div>
-                                                </div>
-                                                <div class='Bodybottom'>
-                                                <div class='upvotes'> <b>Upvotes: </b>".$event['upvotes']."</div>
-                                                <div class='participants'> <b>Participants: </b> 100</div>
-                                                </div>
-                                            </div>
-                                            <div class='EventAction'>
-                                                <input type='hidden' name='event_id' value='". $event['id'] ."'>
-                                                <button type='submit' name='action' value='upvote' class='Upvotebtn'>Upvote</button>
-                                                <button class='Joinbtn' id='joinbtn' name='action' value='joinEvent'>Join Event</button>
-                                                <button class='Joinbtn'>Post</button>
-                                            </div>
-                                            <div class='CommentSection'></div>
-                                        </div>
-                                </form>";
+            foreach ($events as $event) {
+                $ParticipantCount = 0;
+                foreach($Participants as $Participant){
+                    if($event['id'] == $Participant['EventId']){
+                        $ParticipantCount++;
+                    }
                 }
+
+                $display .= "<form action='event_action.php' method='post'>
+                                <div class='UniqueEventContainer'>
+                                    <div class='EventTitle'>" . $event['title'] . "</div>
+                                    <div class='EventBody'>
+                                        <div class='Bodytop'>
+                                            <div class='Date'><b>Date: </b>" . $event['time'] . "</div>
+                                            <div class='EventDescription'>" . $event['body'] . "</div>
+                                        </div>
+                                        <div class='Bodybottom'>
+                                            <div class='upvotes'><b>Upvotes: </b>" . $event['upvotes'] . "</div>
+                                            <div class='participants'><b>Participants:</b> " .$ParticipantCount. "</div>
+                                        </div>
+                                    </div>
+                                    <div class='EventAction'>
+                                        <input type='hidden' name='event_id' value='" . $event['id'] . "'>
+                                        <button type='submit' name='action' value='upvote' class='Upvotebtn'>Upvote</button>
+                                        <button class='Joinbtn' id='joinbtn' name='action' value='joinEvent'>Join Event</button>
+                                        <button class='Joinbtn'>Post</button>
+                                    </div>
+                                    <div class='CommentSection'>";
+
+                foreach ($reviews as $review) {
+                    if ($review['EventId'] == $event['id']) {
+                        $display .= "<div class='ReviewContainer'>
+                                        <div class='ReviewName'>" . $review['name'] . "</div>
+                                        <div class='ReviewBody'>" . $review['body'] . "</div>
+                                    </div>";
+                    }
+                }
+            
+                $display .= "</div>
+                            </div>
+                        </form>";
+            }
         ?>
     </head>
     <body>
