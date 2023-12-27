@@ -14,8 +14,15 @@
     foreach ($requests as $request) {
         $display .= "<form action='api.php' method='post'>
                         <div class='UniqueEventContainer'>
-                            <h4>" . $request['RequestType'] . "</h4>
-                            <h3>" . $request['RequestDesc'] . " </h3>
+                            <div class='EventTitle'>".$request['RequestType']."</div>
+                            <div class='EventBody'>
+                                <div class='Bodytop'>
+                                    <div class='Date'> <b>User: </b>".$request['Username']."</div>
+                                </div>
+                                <div class='Bodybottom'>
+                                    <div class='upvotes'>".$request['RequestDesc']."</div>
+                                </div>
+                            </div>
                             <div class='EventAction'>
                                 <input type='hidden' name='request_id' value='" . $request['UserID'] . "'>
                                 <input type='hidden' name='action' value='accept'>
