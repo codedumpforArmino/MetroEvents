@@ -23,8 +23,8 @@
 
                 file_put_contents('../data/reviews.json', json_encode($reviews, JSON_PRETTY_PRINT));
 
-                   break; 
-                } 
+                break; 
+            } 
         }
     }
 

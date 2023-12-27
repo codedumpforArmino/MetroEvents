@@ -24,13 +24,14 @@
             }
         }
     
-
-        if ($userType === 'regular') {
-            $redirectUrl = "mainpage.php";
-        } else if ($userType === 'organizer') {
-            $redirectUrl = "organier_dash.php";
-        } else {
-            $redirectUrl = "admin_dash.php";
+        if($LogInStatus == 1){
+            if ($userType === 'regular') {
+                $redirectUrl = "mainpage.php";
+            } else if ($userType === 'organizer') {
+                $redirectUrl = "organier_dash.php";
+            } else {
+                $redirectUrl = "admin_dash.php";
+            }
         }
     }
     else if($action === 'Register'){
