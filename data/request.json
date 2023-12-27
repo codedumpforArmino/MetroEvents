@@ -7,24 +7,24 @@
         "EventId": 0
     },
     {
-        "UserID": "1",
+        "UserID": 1,
         "Username": "mariosumm",
-        "RequestType": "Join Event",
-        "RequestDesc": "Interested to join Event",
-        "EventId": "4"
+        "RequestType": "dwadwa",
+        "RequestDesc": "dwadadawd",
+        "EventId": 0
     },
     {
-        "UserID": "1",
+        "UserID": 1,
         "Username": "mariosumm",
-        "RequestType": "Join Event",
-        "RequestDesc": "Interested to join Event",
-        "EventId": "5"
+        "RequestType": "test",
+        "RequestDesc": "tesst1",
+        "EventId": 0
     },
     {
-        "UserID": "1",
-        "Username": "mariosumm",
+        "UserID": 5,
+        "Username": "MariaLoba",
         "RequestType": "Join Event",
         "RequestDesc": "Interested to join Event",
-        "EventId": "6"
+        "EventId": 4
     }
 ]

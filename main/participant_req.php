@@ -11,7 +11,7 @@
     $requests = getRequestsData();
     $display = "";
 
-    foreach ($requests as $request) {
+    foreach ($requests as $key => $request) {
         $display .= "<form action='api.php' method='post'>
                         <div class='UniqueEventContainer'>
                             <div class='EventTitle'>".$request['RequestType']."</div>
@@ -24,12 +24,12 @@
                                 </div>
                             </div>
                             <div class='EventAction'>
-                                <input type='hidden' name='request_id' value='" . $request['UserID'] . "'>
+                                <input type='hidden' name='request_id' value='" . $key . "'>
                                 <input type='hidden' name='action' value='accept'>
                                 <button type='submit' class='Joinbtn'>Accept</button>
                             </div>
                             <div class='EventAction'>
-                                <input type='hidden' name='request_id' value='" . $request['UserID'] . "'>
+                                <input type='hidden' name='request_id' value='" . $key . "'>
                                 <input type='hidden' name='action' value='decline'>
                                 <button type='submit' class='Joinbtn'>Decline</button>
                             </div>

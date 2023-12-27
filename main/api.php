@@ -34,22 +34,65 @@ function getNotificationsData() {
 }
 
 function dltRequest($requestId){
-    
+    $requests = getRequestsData();
+
+    $dataToDelete = $requests[(int) $requestId];
+
+    if ($dataToDelete) {
+        // Find the index of the element to delete
+        $indexToDelete = array_search($dataToDelete, $requests, true);
+
+        if ($indexToDelete !== false) {
+            array_splice($requests, $indexToDelete, 1); // Remove 1 element at the found index
+            saveRequestsToFile($requests);
+            header('Location: participant_req.php');
+            return true;
+        }
+    }
+    return false;
 }
 
-function addNotif(){
+function addNotif($requestId, $case){
+    $requests = getRequestsData();
+    $notifications = getNotificationsData();
+    $data = $requests[(int) $requestId];
+    $notifID = count($notifications);
+
+    if($data['RequestType'] == 'Join Event' && $case == 'accept'){
+        $notifmsg = "Your request to join event has been approved.";
+    }
+
+    if($data['RequestType'] == 'Join Event' && $case == 'decline'){
+        $notifmsg = "Your request to join event has been declined.";
+    }
+
+    if($data['RequestType'] == 'Organizer Request' && $case == 'accept'){
+        $notifmsg = "Your request to join event has been approved.";
+    }
+
+    if($data['RequestType'] == 'Organizer Request' && $case == 'decline'){
+        $notifmsg = "Your request to be an organizer has been declined.";
+    }
+
+    $newData = array(
+        "id" => $notifID+1,
+        "UserID" => $data['UserID'],
+        "body" => $notifmsg
+    );
+
+    $notifications[] = $newData;
+    $updatedJSON = json_encode($notifications, JSON_PRETTY_PRINT);
+    saveNotifToFile($notifications);
+    dltRequest($requestId);
 
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     if(isset($_POST['action'])){
         $action = $_POST['action'];
+        $request = $_POST['request_id'];
 
-        if (action == 'accept') {
-            
-        }elseif (action == 'decline'){
-
-        }
+        addNotif($request, $action);
     }
 }
 
