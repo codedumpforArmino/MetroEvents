@@ -9,15 +9,22 @@
     {
         "UserID": "1",
         "Username": "mariosumm",
-        "RequestType": "dwadwa",
-        "RequestDesc": "dwadadawd",
-        "EventId": 0
+        "RequestType": "Join Event",
+        "RequestDesc": "Interested to join Event",
+        "EventId": "4"
     },
     {
         "UserID": "1",
         "Username": "mariosumm",
-        "RequestType": "test",
-        "RequestDesc": "tesst1",
-        "EventId": 0
+        "RequestType": "Join Event",
+        "RequestDesc": "Interested to join Event",
+        "EventId": "5"
+    },
+    {
+        "UserID": "1",
+        "Username": "mariosumm",
+        "RequestType": "Join Event",
+        "RequestDesc": "Interested to join Event",
+        "EventId": "6"
     }
 ]

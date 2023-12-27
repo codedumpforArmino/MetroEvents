@@ -29,6 +29,11 @@ function getNotificationsData() {
     return $notifications;
 }
 
+
+function reqChoice($request){
+
+}
+
 function deleteNotif(){
 
 }

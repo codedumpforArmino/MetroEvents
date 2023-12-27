@@ -42,7 +42,7 @@
                 <h3 id="CurrentUser">Logged In as <?php echo $_COOKIE['Username']; ?></h3>
                 <div class="interactables">
                     <button onclick="window.location.href = 'organier_dash.php'" id="Home">Home</button>
-                    <a href = "request_page.php">
+                    <a href = "participant_req.php">
                     <button id="dashboard">Request</button>
                     </a>
                     <a href = "notification.php">
@@ -55,32 +55,6 @@
 
         <div class="BodyContainer">
             <div class="Dashboard_container">
-                <div class="table-container">
-                    <h2>Table</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Add table rows dynamically here -->
-                            <tr>
-                                <td>1</td>
-                                <td>John Doe</td>
-                                <td>john@example.com</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Jane Smith</td>
-                                <td>jane@example.com</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
                 <div class="newEvent_forum">
                     <h2>Create Event</h2>
                     <form action="event_action.php" method="post">
