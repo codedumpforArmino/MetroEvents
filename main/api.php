@@ -10,6 +10,10 @@ function saveEventsToFile($events) {
     file_put_contents('../data/events.json', json_encode($events, JSON_PRETTY_PRINT));
 }
 
+function saveNotifToFile($notif){
+    file_put_contents('../data/notif.json', json_encode($notif, JSON_PRETTY_PRINT));
+}
+
 function getRequestsData() {
     $requests = json_decode(file_get_contents('../data/request.json'), true);
     return $requests;
@@ -29,14 +33,46 @@ function getNotificationsData() {
     return $notifications;
 }
 
-
-function reqChoice($request){
-
-}
-
-function deleteNotif(){
+function dltRequest($requestId){
 
 }
+
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    if(isset($_POST['action'])){
+        $action = $_POST['action'];
+
+        if (action == 'accept') {
+            
+        }elseif (action == 'decline'){
+
+        }
+    }
+}
+
+function deleteNotif($notificationId){
+    $notifications = getNotificationsData();
+
+    $indexToDelete = array_search($notificationId, array_column($notifications, 'id'));
+
+    if ($indexToDelete !== false) {
+        array_splice($notifications, $indexToDelete, 1);
+        saveNotifToFile($notifications);
+        header('Location: notification.php');
+        return true;
+    }
+    return false;
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['delete_notification'])) {
+        $notifToDeleteId = $_POST['notification_id'];
+        deleteNotif($notifToDeleteId);
+        exit();
+    }
+}
+
 
 function deleteEvent($eventId) {
     $events = getEventsData();
