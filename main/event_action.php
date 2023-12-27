@@ -72,6 +72,9 @@
         }
             
         file_put_contents($requestsJSON, $updatedJSON);
+
+        header('Location: mainpage.php');
+        exit;
     }
 
     if($action ==='PostReview'){
