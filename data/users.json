@@ -22,5 +22,17 @@
         "Username": "admin",
         "Userpassword": "123",
         "UserType": "admin"
+    },
+    {
+        "UserID": 5,
+        "Username": "MariaLoba",
+        "Userpassword": "qwe123",
+        "UserType": "regular"
+    },
+    {
+        "UserID": 6,
+        "Username": "CoachSteve",
+        "Userpassword": "rrttqq",
+        "UserType": "organizer"
     }
 ]

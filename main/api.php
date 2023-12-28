@@ -34,22 +34,12 @@ function getNotificationsData() {
 }
 
 
-function updateRequestStatus($userId, $action) {
-    if ($action === 'Approve') {
-        $users = json_decode(file_get_contents('users.json'), true);
-        $userIndex = array_search($userId, array_column($users, 'UserID'));
+function updateRequestStatus($userId) {
+    $users = json_decode(file_get_contents('../data/users.json'), true);
 
-        if ($userIndex !== false) {
-            $users[$userIndex]['UserType'] = 'organizer';
-            file_put_contents('users.json', json_encode($users, JSON_PRETTY_PRINT));
-
-            header('Location: admin_dash.php');
-            exit;
-        } else {
-            echo "User not found.";
-            exit;
-        }
-    }
+    $users[$userId-1]['UserType'] = 'organizer';
+    file_put_contents('../data/users.json', json_encode($users, JSON_PRETTY_PRINT));
+    return;
 }
 
 function dltRequest($requestId){
@@ -64,11 +54,10 @@ function dltRequest($requestId){
         if ($indexToDelete !== false) {
             array_splice($requests, $indexToDelete, 1); // Remove 1 element at the found index
             saveRequestsToFile($requests);
-            header('Location: participant_req.php');
-            return true;
+            return;
         }
     }
-    return false;
+    return;
 }
 
 function addNotif($requestId, $case){
@@ -87,6 +76,8 @@ function addNotif($requestId, $case){
 
     if($data['RequestType'] == 'Organizer Request' && $case == 'Approve'){
         $notifmsg = "Your request to join event has been approved.";
+        updateRequestStatus($data['UserID']);
+        echo "stuff";
     }
 
     if($data['RequestType'] == 'Organizer Request' && $case == 'Decline'){
@@ -103,7 +94,7 @@ function addNotif($requestId, $case){
     $updatedJSON = json_encode($notifications, JSON_PRETTY_PRINT);
     saveNotifToFile($notifications);
     dltRequest($requestId);
-
+    return;
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -113,6 +104,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
         addNotif($request, $action);
     }
+
+    header("Location: " . $_POST['caller']);
+    exit();
 }
 
 
@@ -168,16 +162,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $uid = $_COOKIE['UserID'];
         $uname = $_COOKIE['Username'];
         $type = $_POST['RequestType'];
-        $reqdesc = $_POST['RequestDesc'];
         $requests = getRequestsData();
+        $reqdesc = "Request to be Organizer";
+
 
         $maxRequestId = 0;
         foreach ($requests as $request) {
             $maxRequestId = max($maxRequestId, $request['id']);
         }
 
+        
+
         $newRequest = [
-            'UserID' => $uid,
+            'UserID' => (int) $uid,
             'Username' => $uname,
             'RequestType' => $type,
             'RequestDesc' => $reqdesc,

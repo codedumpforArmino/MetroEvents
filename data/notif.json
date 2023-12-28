@@ -13,5 +13,10 @@
         "id": 3,
         "UserID": 1,
         "body": null
+    },
+    {
+        "id": 4,
+        "UserID": 6,
+        "body": "Your request to join event has been approved."
     }
 ]

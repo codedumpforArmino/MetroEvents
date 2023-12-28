@@ -25,6 +25,7 @@
                             </div>
                             <div class='EventAction'>
                                 <input type='hidden' name='request_id' value='" . $key . "'>
+                                <input type='hidden' name='caller' value='" . $_SERVER['PHP_SELF'] . "'>
                                 <input type='hidden' name='action' value='accept'>
                                 <button type='submit' class='Joinbtn'>Accept</button>
                             </div>

@@ -35,8 +35,8 @@
                                             </div>
                                         </div>
                             <div class='EventAction'>
-                                <input type='hidden' name='event_id' value='" . $key . "'>
-                                <input type='hidden' name='user_id' value='" . $request['UserID'] . "'>
+                                <input type='hidden' name='caller' value='" . $_SERVER['PHP_SELF'] . "'>
+                                <input type='hidden' name='request_id' value='" . $key . "'>
                                 <button type='submit'  name='action' value='Approve' class='dltbtn'>Approve</button>
                                 <button type='submit'  name='action' value='Decline' class='dltbtn'>Decline</button>
                             </div>

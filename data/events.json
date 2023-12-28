@@ -52,5 +52,32 @@
         "upvotes": 0,
         "time": "2024-04-15",
         "status": "ongoing"
+    },
+    {
+        "OrganizerId": "6",
+        "id": 7,
+        "title": "Freestyle Jump Rope Open",
+        "body": "Shhowcase your Freestyle jump rope skills",
+        "upvotes": 0,
+        "time": "2024-01-04",
+        "status": "ongoing"
+    },
+    {
+        "OrganizerId": "6",
+        "id": 8,
+        "title": "Coaching Session",
+        "body": "Learn Sports with Coach Steve",
+        "upvotes": 0,
+        "time": "2024-03-12",
+        "status": "ongoing"
+    },
+    {
+        "OrganizerId": "6",
+        "id": 9,
+        "title": "test",
+        "body": "test",
+        "upvotes": 0,
+        "time": "2023-12-30",
+        "status": "ongoing"
     }
 ]
