@@ -119,20 +119,6 @@ function addNotif($requestId, $case){
     return;
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    if(isset($_POST['action'])){
-        $action = $_POST['action'];
-        $request = $_POST['request_id'];
-        
-        addNotif($request, $action);
-    }
-
-    header("Location: " . $_POST['caller']);
-    exit();
-}
-
-
-
 function deleteNotif($notificationId){
     $notifications = getNotificationsData();
 
@@ -146,16 +132,6 @@ function deleteNotif($notificationId){
     }
     return false;
 }
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['delete_notification'])) {
-        echo "real";
-        $notifToDeleteId = $_POST['notification_id'];
-        deleteNotif($notifToDeleteId);
-        exit();
-    }
-}
-
 
 function deleteEvent($eventId) {
     $events = getEventsData();
@@ -171,17 +147,27 @@ function deleteEvent($eventId) {
     return false;
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['delete'])) {
+
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    $redirecturl = '';
+    //
+    if(isset($_POST['action'])){
+        $action = $_POST['action'];
+        $request = $_POST['request_id'];
+        
+        addNotif($request, $action);
+        $redirecturl = $_POST['caller'];
+    }
+    //delete Event
+    elseif (isset($_POST['delete'])) {
         $eventToDeleteId = $_POST['event_id'];
         deleteEvent($eventToDeleteId);
+        $redirecturl = 'admin_dash.php';
         header('Location: admin_dash.php');
         exit();
     }
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['reqsub'])) {
+    //add request
+    elseif (isset($_POST['reqsub'])) {
         $uid = $_COOKIE['UserID'];
         $uname = $_COOKIE['Username'];
         $type = $_POST['RequestType'];
@@ -206,11 +192,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $requests[] = $newRequest;
         saveRequestsToFile($requests);
+        $redirecturl = 'request_page.php';
         header('Location: request_page.php');
         exit();
-    } elseif (isset($_POST['other_action'])) {
-
     }
+
+    header("Location: " . $redirecturl);
+    exit();
 }
 
 ?>
