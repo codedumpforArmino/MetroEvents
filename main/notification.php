@@ -22,7 +22,6 @@
                                 <button type='submit' name='delete_notification' class='dltbtn'>OKEY</button>
                            
                         </div>
-                    </div>
                     </form>";
     }
 }

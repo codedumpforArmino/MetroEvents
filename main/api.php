@@ -147,7 +147,6 @@ function deleteEvent($eventId) {
     return false;
 }
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $redirecturl = '';
     //
@@ -159,7 +158,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $redirecturl = $_POST['caller'];
     }
     //delete Event
-    elseif (isset($_POST['delete'])) {
+    elseif(isset($_POST['delete'])) {
         $eventToDeleteId = $_POST['event_id'];
         deleteEvent($eventToDeleteId);
         $redirecturl = 'admin_dash.php';
@@ -196,6 +195,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         header('Location: request_page.php');
         exit();
     }
+    elseif(isset($_POST['delete_notification'])) {
+        $notifToDelete = $_POST['notification_id'];
+        deleteNotif($notifToDelete);
+        $redirecturl = 'notification.php';
+    }
+    //
+
 
     header("Location: " . $redirecturl);
     exit();
