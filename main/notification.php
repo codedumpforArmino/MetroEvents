@@ -16,7 +16,7 @@
 
         if ($notification['UserID'] == $loggedInUserId) {
         $display .= "<form action='api.php' method='post'>
-                        <div class='UniqueEventContainer'>
+                        <div class='UniqueEventContainer'>          
                             <h4>" . $notification['body'] . "</h4>
                                 <input type='hidden' name='notification_id' value='" . $notification['id'] . "'>
                                 <button type='submit' name='delete_notification' class='dltbtn'>OKEY</button>
@@ -48,9 +48,7 @@
     <div class="BodyContainer">
             <div class="EventContainer">
                 <div id="DataContainer">
-
                     <?php echo $display; ?>
-
                 </div>
             </div>
 

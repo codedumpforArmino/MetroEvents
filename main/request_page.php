@@ -26,7 +26,7 @@
         </div>
     </div>
 
-    <form action="api.php" method="post">
+    <form action="event_action.php" method="post">
         <div class="form-group">
         <label for="type">Request Type</label>
         <select class="form-control" name="RequestType">
@@ -35,7 +35,8 @@
         </select>
             <label for="desc">Request Description</label>
             <textarea class="form-control" id="desc" name="RequestDesc" rows="3"></textarea>
-            <button class="btn btn-primary" type="submit" name="reqsub">Submit</button>
+            <input type='hidden' name='caller' value='" . $_SERVER['PHP_SELF'] . "'>
+            <button class="btn btn-primary" type="submit" name="action" value="reqsub">Submit</button>
         </div>
     </form>
 

@@ -99,6 +99,38 @@
             
         file_put_contents($reviewsJSON, $updatedJSON);
     }
+    
+    if($action === 'reqsub'){
+        $redirectUrl = "request_page.php?success=1";
+        $requestsJSON = '../data/request.json';
+        $request = json_decode(file_get_contents($requestsJSON), true);
+
+        $uid = $_COOKIE['UserID'];
+        $uname = $_COOKIE['Username'];
+        $type = $_POST['RequestType'];
+        $reqdesc = "Request to be Organizer";
+
+        $newData = array(
+            'UserID' => (int) $uid,
+            'Username' => $uname,
+            'RequestType' => $type,
+            'RequestDesc' => $reqdesc,
+            'EventId' => 0,
+        );
+
+        $request[] = $newData;
+
+        $updatedJSON = json_encode($request, JSON_PRETTY_PRINT);
+
+        if ($updatedJSON === false) {
+            echo "Error encoding updated data to JSON";
+            exit;
+        }
+
+        var_dump($reviewsJSON);
+            
+        file_put_contents($requestsJSON, $updatedJSON);
+    }
 
     header("Location: ". $redirectUrl);
     exit();

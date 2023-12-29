@@ -25,14 +25,10 @@
                             </div>
                             <div class='EventAction'>
                                 <input type='hidden' name='request_id' value='" . $key . "'>
+                                <input type='hidden' name='event_id' value='" . $request['EventId'] . "'>
                                 <input type='hidden' name='caller' value='" . $_SERVER['PHP_SELF'] . "'>
-                                <input type='hidden' name='action' value='accept'>
-                                <button type='submit' class='Joinbtn'>Accept</button>
-                            </div>
-                            <div class='EventAction'>
-                                <input type='hidden' name='request_id' value='" . $key . "'>
-                                <input type='hidden' name='action' value='decline'>
-                                <button type='submit' class='Joinbtn'>Decline</button>
+                                <button type='submit' class='Joinbtn' name='action' value='accept'>Accept</button>
+                                <button type='submit' class='Joinbtn' name='action' value='decline'>Decline</button>
                             </div>
                         </div>
                     </form>";

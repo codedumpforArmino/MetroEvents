@@ -60,6 +60,28 @@ function dltRequest($requestId){
     return;
 }
 
+function addParticipant($userId){
+    $participantsJSON = '../data/participants.json';
+    $participants = json_decode(file_get_contents($participantsJSON), true);
+
+    $newData = array(
+        "EventId"=> (int) $_POST['event_id'],
+        "UserId" => $userId
+    );
+
+    $participants[] = $newData;
+
+    $updatedJSON = json_encode($participants, JSON_PRETTY_PRINT);
+
+    if ($updatedJSON === false) {
+        echo "Error encoding updated data to JSON";
+        exit;
+    }
+        
+    file_put_contents($participantsJSON, $updatedJSON);
+    return;
+}
+
 function addNotif($requestId, $case){
     $requests = getRequestsData();
     $notifications = getNotificationsData();
@@ -68,8 +90,9 @@ function addNotif($requestId, $case){
 
     if($data['RequestType'] == 'Join Event' && $case == 'accept'){
         $notifmsg = "Your request to join event has been approved.";
+        addParticipant($data['UserID']);
     }
-
+    
     if($data['RequestType'] == 'Join Event' && $case == 'decline'){
         $notifmsg = "Your request to join event has been declined.";
     }
@@ -77,7 +100,6 @@ function addNotif($requestId, $case){
     if($data['RequestType'] == 'Organizer Request' && $case == 'Approve'){
         $notifmsg = "Your request to join event has been approved.";
         updateRequestStatus($data['UserID']);
-        echo "stuff";
     }
 
     if($data['RequestType'] == 'Organizer Request' && $case == 'Decline'){
@@ -101,7 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     if(isset($_POST['action'])){
         $action = $_POST['action'];
         $request = $_POST['request_id'];
-
+        
         addNotif($request, $action);
     }
 
@@ -127,6 +149,7 @@ function deleteNotif($notificationId){
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['delete_notification'])) {
+        echo "real";
         $notifToDeleteId = $_POST['notification_id'];
         deleteNotif($notifToDeleteId);
         exit();
