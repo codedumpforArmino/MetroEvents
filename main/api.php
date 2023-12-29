@@ -139,12 +139,31 @@ function deleteEvent($eventId) {
     $indexToDelete = array_search($eventId, array_column($events, 'id'));
 
     if ($indexToDelete !== false) {
+        $deletedEvent = $events[$indexToDelete];
         array_splice($events, $indexToDelete, 1);
         saveEventsToFile($events);
+        dltEventNotif($deletedEvent['id']);
         return true;
     }
 
     return false;
+}
+
+function dltEventNotif($eventId) {
+    $notifications = getNotificationsData();
+    $notifmsg = "The event you have joined has now been Cancelled.";
+    $notifID = count($notifications);
+    $uid = $_COOKIE['UserID'];
+
+    $newNoti = [
+        "id" => $notifID + 1,
+        "UserID" => (int) $uid,
+        "body" => $notifmsg
+    ];
+
+    $notifications[] = $newNoti;
+    saveNotifToFile($notifications);
+    return;
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
